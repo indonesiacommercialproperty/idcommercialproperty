@@ -258,21 +258,41 @@
 
     /* featured.jpg — darkened + blurred so text is always legible */
     .featured-bg {
-      position: absolute; inset: 0;
-      background:
-        url('images/featured.jpg') center/cover no-repeat,
-        var(--slate-800);                    /* fallback when no photo */
-      filter: blur(16px) brightness(0.18) saturate(0.3);
-      transform: scale(1.08);
-    }
+  position: absolute;
+  inset: 0;
+
+  background-image: url('images/featured.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  opacity: 0.92;
+
+  z-index: 0;
+}
     .featured-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(105deg, rgba(20,23,26,.97) 44%, rgba(20,23,26,.65) 100%);
-    }
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(10,12,16,0.82) 0%,
+      rgba(10,12,16,0.58) 30%,
+      rgba(10,12,16,0.18) 60%,
+      rgba(10,12,16,0.05) 100%
+    );
+
+  z-index: 1;
+}
+    .featured-mesh {
+  display: none;
+}
+    /*
     .featured-mesh {
       position: absolute; inset: 0; pointer-events: none;
       background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255,255,255,.012) 40px, rgba(255,255,255,.012) 41px);
-    }
+    }*/
 
     .featured-content {
       position: relative; z-index: 2;
