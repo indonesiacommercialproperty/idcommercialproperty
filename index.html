@@ -257,7 +257,7 @@
     }
 
     /* featured.jpg — darkened + blurred so text is always legible */
-  .featured-bg {
+.featured-bg {
   position: absolute;
   inset: 0;
 
@@ -266,13 +266,19 @@
   background-size: cover;
   background-repeat: no-repeat;
 
-  filter: blur(16px) brightness(0.18) saturate(0.3);
-  transform: scale(1.08);
+  filter: blur(6px) brightness(0.42) saturate(0.75);
+  transform: scale(1.04);
 }
     .featured-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(105deg, rgba(20,23,26,.97) 44%, rgba(20,23,26,.65) 100%);
-    }
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    105deg,
+    rgba(20,23,26,.78) 38%,
+    rgba(20,23,26,.35) 100%
+  );
+}
     .featured-mesh {
       position: absolute; inset: 0; pointer-events: none;
       background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255,255,255,.012) 40px, rgba(255,255,255,.012) 41px);
