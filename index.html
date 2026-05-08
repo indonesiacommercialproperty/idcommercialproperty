@@ -257,24 +257,19 @@
     }
 
     /* featured.jpg — darkened + blurred so text is always legible */
-.featured-bg {
-  position: absolute;
-  inset: 0;
-
-  background-image: url('images/featured.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  filter: blur(16px) brightness(0.18) saturate(0.3);
-  transform: scale(1.08);
-}
-
-featured-overlay {
+    .featured-bg {
+      position: absolute; inset: 0;
+      background:
+        url('images/featured.jpg') center/cover no-repeat,
+        var(--slate-800);                    /* fallback when no photo */
+      filter: blur(16px) brightness(0.18) saturate(0.3);
+      transform: scale(1.08);
+    }
+    .featured-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(105deg, rgba(20,23,26,.97) 44%, rgba(20,23,26,.65) 100%);
     }
- .featured-mesh {
+    .featured-mesh {
       position: absolute; inset: 0; pointer-events: none;
       background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255,255,255,.012) 40px, rgba(255,255,255,.012) 41px);
     }
