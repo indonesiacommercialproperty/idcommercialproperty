@@ -261,33 +261,24 @@
   position: absolute;
   inset: 0;
 
-  background-image: url('images/featured.jpg');
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: url('images/featured.jpg') center center / cover no-repeat;
 
-  filter: brightness(0.72) saturate(0.95) contrast(1.05);
-
-  transform: scale(1.02);
+  z-index: 0;
 }
-    .featured-overlay {
+
+.featured-overlay {
   position: absolute;
   inset: 0;
 
-  background:
-    linear-gradient(
-      90deg,
-      rgba(10,12,16,0.82) 0%,
-      rgba(10,12,16,0.62) 28%,
-      rgba(10,12,16,0.28) 55%,
-      rgba(10,12,16,0.08) 100%
-    );
+  background: rgba(0,0,0,0.45);
+
+  z-index: 1;
 }
-    .featured-mesh {
+  /*  .featured-mesh {
       position: absolute; inset: 0; pointer-events: none;
       background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255,255,255,.012) 40px, rgba(255,255,255,.012) 41px);
     }
-
+*/
     .featured-content {
       position: relative; z-index: 2;
       max-width: 1200px; margin: 0 auto; width: 100%;
