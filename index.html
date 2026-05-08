@@ -261,9 +261,13 @@
   position: absolute;
   inset: 0;
 
-  background: url('images/featured.jpg') center center / cover no-repeat;
+  background-image: url('images/featured.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
-  z-index: 0;
+  filter: blur(16px) brightness(0.18) saturate(0.3);
+  transform: scale(1.08);
 }
 
 .featured-overlay {
@@ -274,11 +278,11 @@
 
   z-index: 1;
 }
-  /*  .featured-mesh {
+ .featured-mesh {
       position: absolute; inset: 0; pointer-events: none;
       background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255,255,255,.012) 40px, rgba(255,255,255,.012) 41px);
     }
-*/
+
     .featured-content {
       position: relative; z-index: 2;
       max-width: 1200px; margin: 0 auto; width: 100%;
