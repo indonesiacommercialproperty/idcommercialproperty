@@ -262,22 +262,26 @@
   inset: 0;
 
   background-image: url('images/featured.jpg');
-  background-position: center;
+  background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
 
-  filter: blur(6px) brightness(0.42) saturate(0.75);
-  transform: scale(1.04);
+  filter: brightness(0.72) saturate(0.95) contrast(1.05);
+
+  transform: scale(1.02);
 }
     .featured-overlay {
   position: absolute;
   inset: 0;
 
-  background: linear-gradient(
-    105deg,
-    rgba(20,23,26,.78) 38%,
-    rgba(20,23,26,.35) 100%
-  );
+  background:
+    linear-gradient(
+      90deg,
+      rgba(10,12,16,0.82) 0%,
+      rgba(10,12,16,0.62) 28%,
+      rgba(10,12,16,0.28) 55%,
+      rgba(10,12,16,0.08) 100%
+    );
 }
     .featured-mesh {
       position: absolute; inset: 0; pointer-events: none;
