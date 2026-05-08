@@ -1,825 +1,978 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Indonesia Commercial Property</title>
-
-<style>
-
-/* =========================
-   RESET
-========================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f4f4f4;
-    color:#222;
-    line-height:1.5;
-}
-
-/* =========================
-   NAVBAR
-========================= */
-
-.navbar{
-    background:#595959;
-    color:white;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:18px 48px;
-
-    position:sticky;
-    top:0;
-    z-index:1000;
-}
-
-.logo{
-    font-size:18px;
-    font-weight:600;
-}
-
-.nav-links{
-    display:flex;
-    gap:28px;
-}
-
-.nav-links a{
-    color:white;
-    text-decoration:none;
-    font-size:14px;
-}
-
-.nav-links a:hover{
-    opacity:0.8;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    gap:60px;
-
-    padding:80px 60px;
-
-    background:#ededed;
-}
-
-.hero-left{
-    flex:1;
-}
-
-.hero-left h1{
-    font-size:64px;
-    line-height:1.08;
-    margin-bottom:24px;
-    font-weight:600;
-}
-
-.hero-left p{
-    font-size:20px;
-    margin-bottom:28px;
-    color:#555;
-}
-
-.primary-btn{
-    background:#2f2f2f;
-    color:white;
-
-    border:none;
-
-    padding:14px 24px;
-
-    border-radius:6px;
-
-    cursor:pointer;
-
-    font-size:15px;
-
-    transition:0.2s ease;
-}
-
-.primary-btn:hover{
-    opacity:0.92;
-}
-
-.hero-right{
-    flex:1;
-}
-
-.hero-right img{
-    width:100%;
-    border-radius:14px;
-    object-fit:cover;
-}
-
-/* =========================
-   FEATURED
-========================= */
-
-.featured{
-
-    height:560px;
-
-    background-image:url("images/featured.jpg");
-
-    background-size:cover;
-    background-position:center;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    position:relative;
-}
-
-.featured::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-    linear-gradient(
-        rgba(0,0,0,0.58),
-        rgba(0,0,0,0.58)
-    );
-
-    backdrop-filter:blur(1.5px);
-}
-
-.featured-content{
-
-    position:relative;
-
-    z-index:2;
-
-    color:white;
-
-    text-align:center;
-
-    padding:48px;
-
-    max-width:760px;
-
-    background:rgba(0,0,0,0.18);
-
-    border-radius:16px;
-
-    backdrop-filter:blur(3px);
-}
-
-.featured-content h2{
-
-    font-size:48px;
-
-    letter-spacing:1px;
-
-    margin-bottom:28px;
-}
-
-.featured-content h3{
-
-    font-size:32px;
-
-    margin-bottom:16px;
-
-    font-weight:600;
-}
-
-.featured-highlight{
-
-    font-size:20px;
-
-    font-weight:600;
-
-    margin-bottom:18px;
-
-    color:#f1f1f1;
-}
-
-.featured-description{
-
-    font-size:17px;
-
-    color:#dddddd;
-
-    margin-bottom:30px;
-
-    line-height:1.7;
-}
-
-/* =========================
-   FILTERS
-========================= */
-
-.filters{
-    padding:50px 20px 30px;
-    text-align:center;
-}
-
-.tag-container{
-    margin-bottom:24px;
-}
-
-.filter-tag{
-
-    display:inline-block;
-
-    background:#e2e2e2;
-
-    padding:10px 18px;
-
-    border-radius:999px;
-
-    margin:6px;
-
-    font-size:14px;
-}
-
-.search-bar{
-    max-width:720px;
-    margin:auto;
-}
-
-.search-bar input{
-
-    width:100%;
-
-    padding:16px 22px;
-
-    border-radius:999px;
-
-    border:1px solid #d0d0d0;
-
-    font-size:15px;
-}
-
-/* =========================
-   PROPERTY GRID
-========================= */
-
-.properties{
-    padding:30px 50px 70px;
-}
-
-.cards{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(320px,1fr));
-
-    gap:28px;
-}
-
-.card{
-
-    background:white;
-
-    border-radius:14px;
-
-    overflow:hidden;
-
-    box-shadow:
-    0 3px 12px rgba(0,0,0,0.08);
-
-    transition:0.2s ease;
-}
-
-.card:hover{
-    transform:translateY(-3px);
-}
-
-.card-image{
-    position:relative;
-}
-
-.card-image img{
-
-    width:100%;
-
-    height:230px;
-
-    object-fit:cover;
-}
-
-/* =========================
-   BADGES
-========================= */
-
-.badges{
-
-    position:absolute;
-
-    top:14px;
-
-    left:14px;
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:8px;
-}
-
-.badge{
-
-    background:#cfe8d4;
-
-    color:#1e4427;
-
-    padding:6px 10px;
-
-    border-radius:6px;
-
-    font-size:12px;
-
-    font-weight:600;
-}
-
-/* =========================
-   CARD CONTENT
-========================= */
-
-.card-content{
-    padding:24px;
-}
-
-.card-content h3{
-
-    margin-bottom:20px;
-
-    font-size:22px;
-}
-
-.metric{
-    margin-bottom:14px;
-}
-
-.metric-title{
-
-    color:#777;
-
-    font-size:13px;
-}
-
-.metric-value{
-
-    font-size:18px;
-
-    font-weight:700;
-}
-
-.card-content button{
-
-    width:100%;
-
-    margin-top:20px;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-.footer{
-
-    background:#2f2f2f;
-
-    color:white;
-
-    text-align:center;
-
-    padding:24px;
-
-    font-size:14px;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:900px){
-
-    .hero{
-        flex-direction:column;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indonesia Commercial Property | Buy Income. Not Hope.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --slate-900: #14171A;
+      --slate-850: #191D21;
+      --slate-800: #1F2328;
+      --slate-750: #252A30;
+      --slate-700: #2C3138;
+      --slate-600: #363D46;
+      --slate-500: #424A54;
+      --slate-400: #5A6470;
+      --slate-300: #7E8C9A;
+      --slate-200: #B0BBC6;
+      --slate-100: #D6DDE4;
+      --slate-050: #EEF1F4;
+
+      --gold:       #C4A252;
+      --gold-dim:   #8A6E35;
+      --gold-pale:  rgba(196,162,82,0.10);
+      --gold-line:  rgba(196,162,82,0.28);
+
+      --chip-green-bg:  rgba(52,211,153,0.08);  --chip-green-t:  #34D399; --chip-green-b:  rgba(52,211,153,0.2);
+      --chip-blue-bg:   rgba(99,179,237,0.08);  --chip-blue-t:   #63B3ED; --chip-blue-b:   rgba(99,179,237,0.2);
+      --chip-amber-bg:  rgba(251,191,36,0.08);  --chip-amber-t:  #FBBF24; --chip-amber-b:  rgba(251,191,36,0.2);
+      --chip-rose-bg:   rgba(251,113,133,0.08); --chip-rose-t:   #FB7185; --chip-rose-b:   rgba(251,113,133,0.2);
+
+      --radius-sm: 3px; --radius: 8px; --radius-lg: 12px;
+      --banner-h:  50px;
     }
 
-    .hero-left h1{
-        font-size:42px;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      background: var(--slate-850); color: var(--slate-200);
+      font-family: 'DM Sans', sans-serif; font-weight: 300;
+      line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    body::after {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+    h1,h2,h3,h4,h5 { font-family:'Cormorant Garamond',serif; font-weight:500; line-height:1.15; }
+    a { text-decoration:none; color:inherit; }
+    button { font-family:'DM Sans',sans-serif; cursor:pointer; border:none; background:none; }
+    img { max-width:100%; display:block; }
+
+    /* ── TOP BANNER ───────────────────────────────────────── */
+    .top-banner {
+      position: sticky; top: 0; z-index: 200;
+      height: var(--banner-h);
+      background: var(--slate-900);
+      border-bottom: 1px solid var(--slate-600);
+      display: flex; align-items: center;
+      padding: 0 48px; gap: 16px;
+    }
+    .top-banner::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 120px; height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+    }
+    .banner-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--slate-100); flex: 1;
+      display: flex; align-items: center; gap: 10px; white-space: nowrap;
+    }
+    .logo-mark {
+      width: 20px; height: 20px; flex-shrink: 0;
+      border: 1.5px solid var(--gold-dim); border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-mark::after { content:''; width:7px; height:7px; background:var(--gold-dim); border-radius:1px; }
+
+    .banner-nav { display:flex; align-items:center; gap:2px; }
+    .banner-nav a {
+      font-size:11px; font-weight:400; letter-spacing:.09em; text-transform:uppercase;
+      color:var(--slate-400); padding:6px 13px;
+      border-radius:var(--radius-sm); border:1px solid transparent;
+      transition:all .15s; white-space:nowrap;
+    }
+    .banner-nav a:hover { color:var(--slate-100); background:var(--slate-800); }
+    .banner-nav-sep { width:1px; height:14px; background:var(--slate-600); margin:0 6px; flex-shrink:0; }
+    .banner-nav a.cta { background:var(--gold); color:var(--slate-900); font-weight:600; border-color:var(--gold); }
+    .banner-nav a.cta:hover { background:#D4B262; }
+
+    .hamburger { display:none; flex-direction:column; gap:5px; padding:6px; cursor:pointer; border-radius:4px; }
+    .hamburger span { display:block; width:20px; height:1.5px; background:var(--slate-300); border-radius:2px; transition:all .2s; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-nav {
+      display:none; flex-direction:column;
+      position:fixed; top:var(--banner-h); left:0; right:0;
+      background:var(--slate-900); border-bottom:1px solid var(--slate-600);
+      padding:12px 20px 16px; gap:3px; z-index:199;
+      box-shadow:0 8px 32px rgba(0,0,0,.4);
+    }
+    .mobile-nav.open { display:flex; }
+    .mobile-nav a { font-size:13px; letter-spacing:.07em; text-transform:uppercase; color:var(--slate-400); padding:10px 12px; border-radius:4px; transition:all .15s; }
+    .mobile-nav a:hover { color:var(--slate-100); background:var(--slate-800); }
+    .mobile-nav hr { border:none; border-top:1px solid var(--slate-700); margin:6px 0; }
+    .mobile-nav a.cta { background:var(--gold); color:var(--slate-900); font-weight:600; text-align:center; margin-top:4px; border-radius:var(--radius-sm); }
+
+    /* ── HERO — no image, data-forward layout ─────────────── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - var(--banner-h));
+      background: var(--slate-850);
     }
 
-    .navbar{
-
-        flex-direction:column;
-
-        gap:14px;
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 56px 80px 80px;
+      position: relative;
+    }
+    .hero-left::before {
+      content: ''; position: absolute; top: 44px; left: 44px;
+      width: 24px; height: 24px;
+      border-top: 1px solid var(--gold-line); border-left: 1px solid var(--gold-line);
+    }
+    /* vertical divider */
+    .hero-left::after {
+      content: ''; position: absolute; right: 0; top: 12%; bottom: 12%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--slate-700) 30%, var(--slate-700) 70%, transparent);
     }
 
-    .nav-links{
+    .hero-eyebrow {
+      font-size: 10px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .hero-eyebrow::before { content:''; display:block; width:28px; height:1px; background:var(--gold); }
 
-        flex-wrap:wrap;
+    .hero h1 {
+      font-size: clamp(38px, 4vw, 68px);
+      font-weight: 300; color: var(--slate-050); margin-bottom: 26px;
+    }
+    .hero h1 em { font-style:italic; color:var(--gold); }
+    .hero h1 strong { font-weight:700; display:block; }
 
-        justify-content:center;
+    .hero-sub {
+      font-size: 15px; color: var(--slate-300);
+      max-width: 440px; line-height: 1.8; margin-bottom: 40px;
+    }
+    .hero-sub strong { color:var(--slate-100); font-weight:500; }
+
+    .hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
+
+    .btn-primary {
+      background:var(--gold); color:var(--slate-900);
+      font-weight:600; font-size:12px; letter-spacing:.09em; text-transform:uppercase;
+      padding:13px 28px; border-radius:var(--radius-sm); border:1.5px solid var(--gold);
+      transition:all .18s; cursor:pointer; display:inline-block;
+    }
+    .btn-primary:hover { background:#D4B262; border-color:#D4B262; }
+
+    .btn-ghost {
+      background:transparent; color:var(--slate-300);
+      font-size:12px; letter-spacing:.09em; text-transform:uppercase;
+      padding:13px 22px; border-radius:var(--radius-sm); border:1.5px solid var(--slate-600);
+      transition:all .18s; cursor:pointer; display:inline-block;
+    }
+    .btn-ghost:hover { color:var(--slate-100); border-color:var(--slate-400); }
+
+    /* ── HERO RIGHT — stat cards, no photo needed ─────────── */
+    .hero-right {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 80px 80px 56px; gap: 16px;
     }
 
-    .featured-content{
-        padding:30px;
+    .hero-stat-card {
+      background: var(--slate-800);
+      border: 1px solid var(--slate-600);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      position: relative; overflow: hidden;
+      transition: border-color .2s;
+    }
+    .hero-stat-card::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px; background: var(--gold-dim);
+    }
+    .hero-stat-card:hover { border-color: var(--slate-500); }
+
+    .hsc-label {
+      font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--slate-400); margin-bottom: 10px;
+    }
+    .hsc-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 44px; font-weight: 600;
+      color: var(--slate-050); line-height: 1;
+    }
+    .hsc-value .unit {
+      font-size: 18px; font-weight: 400;
+      color: var(--gold); margin-left: 4px;
+    }
+    .hsc-sub {
+      font-size: 12px; color: var(--slate-400);
+      margin-top: 8px;
     }
 
-    .featured-content h2{
-        font-size:36px;
+    /* ── STATS STRIP (between hero and featured) ──────────── */
+    .stats-strip {
+      background: var(--slate-900);
+      border-top: 1px solid var(--slate-700);
+      border-bottom: 1px solid var(--slate-700);
+      padding: 0 80px;
+    }
+    .stats-strip-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+    }
+    .stat-item {
+      padding: 28px 0;
+      display: flex; flex-direction: column; gap: 6px;
+      position: relative;
+    }
+    .stat-item + .stat-item::before {
+      content: ''; position: absolute; left: 0; top: 20%; bottom: 20%;
+      width: 1px; background: var(--slate-700);
+    }
+    .stat-item + .stat-item { padding-left: 40px; }
+
+    .stat-label {
+      font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--slate-400);          /* FIX #6 — was too dim */
+    }
+    .stat-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px; font-weight: 600; color: var(--gold); line-height: 1;
+    }
+    .stat-note { font-size: 12px; color: var(--slate-300); }
+
+    /* ── FEATURED PROPERTY ────────────────────────────────── */
+    .featured {
+      position: relative; overflow: hidden;
+      min-height: 460px; display: flex; align-items: center;
+      border-top: 1px solid var(--slate-600); border-bottom: 1px solid var(--slate-600);
+    }
+    .featured::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 1px; z-index: 3;
+      background: linear-gradient(to right, var(--gold), transparent 60%);
     }
 
-    .featured-content h3{
-        font-size:24px;
+    /* featured.jpg — darkened + blurred so text is always legible */
+    .featured-bg {
+      position: absolute; inset: 0;
+      background:
+        url('featured.jpg') center/cover no-repeat,
+        var(--slate-800);                    /* fallback when no photo */
+      filter: blur(16px) brightness(0.18) saturate(0.3);
+      transform: scale(1.08);
+    }
+    .featured-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, rgba(20,23,26,.97) 44%, rgba(20,23,26,.65) 100%);
+    }
+    .featured-mesh {
+      position: absolute; inset: 0; pointer-events: none;
+      background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255,255,255,.012) 40px, rgba(255,255,255,.012) 41px);
     }
 
-}
+    .featured-content {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      padding: 72px 80px;
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 56px;
+    }
+    .featured-eyebrow {
+      font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:var(--gold);
+      margin-bottom:16px; display:flex; align-items:center; gap:12px;
+    }
+    .featured-eyebrow::before { content:''; display:block; width:20px; height:1px; background:var(--gold); }
+    .featured h2 { font-size:clamp(28px,3.2vw,50px); font-weight:400; color:var(--slate-050); margin-bottom:14px; }
+    .featured-tagline {
+      font-size:14px; color:var(--slate-400); margin-bottom:28px;
+      display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    }
+    .featured-tagline .sep { width:3px; height:3px; background:var(--gold-dim); border-radius:50%; }
+    .featured-tagline strong { color:var(--slate-100); font-weight:500; }
+    .featured-chips { display:flex; gap:8px; flex-wrap:wrap; }
+    .chip {
+      font-size:10px; letter-spacing:.07em; text-transform:uppercase;
+      padding:5px 12px; border-radius:100px; border:1px solid; font-weight:500;
+    }
+    .chip-green  { background:var(--chip-green-bg);  color:var(--chip-green-t);  border-color:var(--chip-green-b); }
+    .chip-blue   { background:var(--chip-blue-bg);   color:var(--chip-blue-t);   border-color:var(--chip-blue-b); }
+    .chip-orange { background:var(--chip-amber-bg);  color:var(--chip-amber-t);  border-color:var(--chip-amber-b); }
+    .featured-cta { margin-top:28px; }
 
-</style>
+    .featured-kpis { display:flex; flex-direction:column; gap:14px; min-width:180px; }
+    .kpi-box {
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--slate-600); border-radius:var(--radius);
+      padding:18px 22px; text-align:center;
+    }
+    .kpi-label {
+      font-size:10px; letter-spacing:.18em; text-transform:uppercase;
+      color: var(--slate-300);            /* FIX #6 — was rgba(...0.35), now readable */
+      margin-bottom:8px;
+    }
+    .kpi-value { font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:600; color:var(--gold); line-height:1; }
+    .kpi-sub { font-size:12px; color:var(--slate-300); margin-top:5px; } /* FIX #6 */
+
+    /* ── LISTINGS ─────────────────────────────────────────── */
+    .listings { padding:72px 80px; max-width:1200px; margin:0 auto; }
+    .listings-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:28px; }
+    .section-eyebrow { font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+    .section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(24px,2.8vw,38px); font-weight:400; color:var(--slate-050); }
+
+    /* property type filter */
+    .filter-bar { display:flex; align-items:center; gap:7px; flex-wrap:wrap; margin-bottom:10px; }
+
+    /* feature filter row */
+    .feature-bar { display:flex; align-items:center; gap:7px; flex-wrap:wrap; margin-bottom:20px; }
+    .feature-bar-label { font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--slate-500); white-space:nowrap; margin-right:4px; }
+
+    .type-pill, .feat-pill {
+      font-size:11px; font-weight:500; letter-spacing:.07em; text-transform:uppercase;
+      padding:6px 15px; border-radius:100px; border:1px solid var(--slate-600);
+      color:var(--slate-400); background:transparent; cursor:pointer; transition:all .15s;
+    }
+    .type-pill:hover, .feat-pill:hover { color:var(--slate-100); border-color:var(--slate-400); }
+    .type-pill.active { background:var(--gold); color:var(--slate-900); border-color:var(--gold); font-weight:600; }
+    .feat-pill.active { background:var(--slate-700); color:var(--slate-100); border-color:var(--slate-500); }
+
+    /* search + sort */
+    .search-sort-row { display:flex; align-items:center; gap:10px; margin-bottom:28px; }
+    .search-wrap { flex:1; position:relative; }
+    .search-wrap svg { position:absolute; left:13px; top:50%; transform:translateY(-50%); color:var(--slate-500); }
+    .search-input {
+      width:100%; background:var(--slate-750); border:1px solid var(--slate-600); border-radius:var(--radius);
+      color:var(--slate-100); font-family:'DM Sans',sans-serif; font-size:14px;
+      padding:10px 14px 10px 38px; outline:none; transition:border-color .15s;
+    }
+    .search-input::placeholder { color:var(--slate-500); }
+    .search-input:focus { border-color:var(--gold-dim); }
+
+    /* FIX #4 — sort: removed pointer-events issue, ensured z-index and normal select behaviour */
+    .sort-wrap { position:relative; }
+    .sort-select {
+      background:var(--slate-750); border:1px solid var(--slate-600); border-radius:var(--radius);
+      color:var(--slate-200); font-family:'DM Sans',sans-serif; font-size:13px;
+      padding:10px 36px 10px 14px; outline:none; cursor:pointer;
+      appearance:none; -webkit-appearance:none; -moz-appearance:none;
+      min-width:190px; position:relative; z-index:1;
+    }
+    .sort-select option { background:var(--slate-750); color:var(--slate-100); }
+    .sort-wrap::after {
+      content:''; position:absolute; right:13px; top:50%; transform:translateY(-50%);
+      width:10px; height:6px; pointer-events:none;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237E8C9A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center;
+    }
+    .sort-select:focus { border-color:var(--gold-dim); }
+    .sort-label { font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--slate-500); white-space:nowrap; }
+
+    /* ── CARDS ────────────────────────────────────────────── */
+    .cards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(272px,1fr)); gap:16px; }
+
+    .prop-card {
+      background:var(--slate-750); border:1px solid var(--slate-600);
+      border-radius:var(--radius-lg); overflow:hidden;
+      transition:transform .2s, box-shadow .2s, border-color .2s; cursor:pointer;
+    }
+    .prop-card:hover { transform:translateY(-3px); border-color:var(--slate-500); box-shadow:0 12px 40px rgba(0,0,0,.35); }
+
+    .card-thumb { position:relative; height:190px; overflow:hidden; }
+    .card-thumb-fallback { width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
+    .thumb-icon { font-size:32px; opacity:.1; }
+    .thumb-off  { background:linear-gradient(135deg,#2A2F36,#222830); }
+    .thumb-col  { background:linear-gradient(135deg,#262E2A,#1E2822); }
+    .thumb-ret  { background:linear-gradient(135deg,#2E2C28,#26241E); }
+    .thumb-ware { background:linear-gradient(135deg,#242C34,#1C242E); }
+
+    /* FIX #5 — tags stack vertically, max 2 */
+    .card-feature-tags {
+      position:absolute; top:10px; left:10px;
+      display:flex; flex-direction:column; gap:5px;   /* vertical stack */
+    }
+    .card-chip {
+      font-size:9px; letter-spacing:.1em; text-transform:uppercase;
+      padding:3px 9px; border-radius:100px; border:1px solid; font-weight:600;
+      display:block; /* ensure block for column stacking */
+    }
+    /* hide any chip beyond 2nd */
+    .card-feature-tags .card-chip:nth-child(n+3) { display:none; }
+
+    .cchip-green  { background:var(--chip-green-bg);  color:var(--chip-green-t);  border-color:var(--chip-green-b); }
+    .cchip-blue   { background:var(--chip-blue-bg);   color:var(--chip-blue-t);   border-color:var(--chip-blue-b); }
+    .cchip-orange { background:var(--chip-amber-bg);  color:var(--chip-amber-t);  border-color:var(--chip-amber-b); }
+    .cchip-red    { background:var(--chip-rose-bg);   color:var(--chip-rose-t);   border-color:var(--chip-rose-b); }
+
+    .card-type-tag {
+      position:absolute; top:10px; right:10px;
+      font-size:9px; letter-spacing:.12em; text-transform:uppercase;
+      background:rgba(20,23,26,.75); backdrop-filter:blur(6px);
+      color:var(--slate-300); padding:3px 9px;     /* FIX #6 — was slate-400 */
+      border-radius:100px; border:1px solid var(--slate-600);
+    }
+    .card-yield-badge {
+      position:absolute; bottom:10px; right:10px;
+      background:var(--slate-900); border:1px solid var(--gold-dim);
+      border-radius:var(--radius-sm); padding:6px 11px; text-align:center;
+    }
+    .card-yield-pct { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; color:var(--gold); line-height:1; }
+    .card-yield-label { font-size:8px; letter-spacing:.12em; text-transform:uppercase; color:var(--slate-300); margin-top:2px; } /* FIX #6 */
+
+    .card-body { padding:16px 18px 20px; }
+    .card-name { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:500; color:var(--slate-100); margin-bottom:4px; line-height:1.2; }
+    .card-location { font-size:12px; color:var(--slate-400); margin-bottom:13px; display:flex; align-items:center; gap:5px; }
+    .card-divider { height:1px; background:var(--slate-700); margin-bottom:13px; }
+    .card-stats { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .card-stat-label { font-size:9px; letter-spacing:.13em; text-transform:uppercase; color:var(--slate-400); margin-bottom:2px; }
+    .card-stat-val { font-size:13px; font-weight:500; color:var(--slate-100); }
+
+    /* ── MANDATE ──────────────────────────────────────────── */
+    .mandate {
+      background:var(--slate-800);
+      border-top:1px solid var(--slate-600); border-bottom:1px solid var(--slate-600);
+      padding:80px;
+    }
+    .mandate-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start; }
+    .mandate-left h2 { font-size:clamp(26px,3.2vw,48px); font-weight:300; color:var(--slate-050); margin-bottom:14px; }
+    .mandate-left h2 em { font-style:italic; color:var(--gold); }
+    .mandate-body { font-size:15px; color:var(--slate-400); line-height:1.8; margin-bottom:24px; }
+    .mandate-bullets { list-style:none; display:flex; flex-direction:column; gap:9px; }
+    .mandate-bullets li { font-size:13px; color:var(--slate-400); display:flex; align-items:center; gap:12px; }
+    .mandate-bullets li::before { content:''; display:block; width:14px; height:1px; background:var(--gold); flex-shrink:0; }
+
+    .mandate-form { display:flex; flex-direction:column; gap:13px; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:13px; }
+    .form-group { display:flex; flex-direction:column; gap:5px; }
+    .form-label { font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--slate-400); }
+    .form-input, .form-select {
+      background:var(--slate-750); border:1px solid var(--slate-600); border-radius:var(--radius);
+      color:var(--slate-100); font-family:'DM Sans',sans-serif; font-size:14px;
+      padding:10px 13px; outline:none; transition:border-color .15s; width:100%;
+    }
+    .form-select { appearance:none; cursor:pointer; padding-right:32px;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%235A6470' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat:no-repeat; background-position:right 11px center; }
+    .form-select option { background:var(--slate-750); }
+    .form-input::placeholder { color:var(--slate-600); }
+    .form-input:focus, .form-select:focus { border-color:var(--gold-dim); }
+    .mandate-disclaimer { font-size:11px; color:var(--slate-500); margin-top:8px; }
+
+    /* ── FOOTER ───────────────────────────────────────────── */
+    footer {
+      background:var(--slate-900); border-top:1px solid var(--slate-700);
+      padding:26px 80px; display:flex; align-items:center; justify-content:space-between; gap:24px;
+    }
+    .footer-brand { font-family:'Cormorant Garamond',serif; font-size:13px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--slate-400); display:flex; align-items:center; gap:9px; }
+    .footer-logo-mark { width:16px; height:16px; border:1px solid var(--gold-dim); border-radius:2px; display:flex; align-items:center; justify-content:center; }
+    .footer-logo-mark::after { content:''; width:5px; height:5px; background:var(--gold-dim); border-radius:1px; }
+    .footer-copy { font-size:12px; color:var(--slate-600); }
+    .footer-links { display:flex; gap:22px; }
+    .footer-links a { font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--slate-600); transition:color .15s; }
+    .footer-links a:hover { color:var(--slate-300); }
+
+    /* ── ANIMATIONS ───────────────────────────────────────── */
+    @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+    .hero-eyebrow { animation:fadeUp .5s .1s both; }
+    .hero h1      { animation:fadeUp .6s .2s both; }
+    .hero-sub     { animation:fadeUp .5s .3s both; }
+    .hero-actions { animation:fadeUp .5s .4s both; }
+    .hero-right   { animation:fadeUp .6s .3s both; }
+
+    /* ── RESPONSIVE ───────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .banner-nav { display:none; }
+      .hamburger  { display:flex; }
+
+      .hero { grid-template-columns:1fr; min-height:auto; }
+      .hero-left { padding:52px 24px; }
+      .hero-left::before, .hero-left::after { display:none; }
+      .hero-right { padding:0 24px 52px; flex-direction:row; flex-wrap:wrap; gap:12px; }
+      .hero-stat-card { flex:1; min-width:160px; }
+      .hsc-value { font-size:32px; }
+
+      .stats-strip { padding:0 24px; }
+      .stats-strip-inner { grid-template-columns:1fr; }
+      .stat-item + .stat-item::before { display:none; }
+      .stat-item + .stat-item { padding-left:0; border-top:1px solid var(--slate-700); }
+
+      .featured-content { grid-template-columns:1fr; padding:52px 24px; }
+      .featured-kpis { flex-direction:row; flex-wrap:wrap; gap:10px; }
+
+      .listings { padding:52px 24px; }
+      .listings-header { flex-direction:column; align-items:flex-start; gap:4px; }
+      .search-sort-row { flex-wrap:wrap; }
+      .sort-wrap { flex:1; }
+      .sort-select { min-width:0; width:100%; }
+
+      .mandate { padding:52px 24px; }
+      .mandate-inner { grid-template-columns:1fr; gap:36px; }
+      .form-row { grid-template-columns:1fr; }
+
+      footer { flex-direction:column; text-align:center; padding:24px; gap:14px; }
+      .footer-links { justify-content:center; }
+      .top-banner { padding:0 20px; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size:34px; }
+      .cards-grid { grid-template-columns:1fr; }
+      .type-pill, .feat-pill { font-size:10px; padding:5px 11px; }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- =========================
-     NAVBAR
-========================= -->
+  <!-- TOP BANNER -->
+  <header class="top-banner">
+    <div class="banner-logo"><span class="logo-mark"></span>Indonesia Commercial Property</div>
+    <nav class="banner-nav">
+      <a href="#insights">Insights</a>
+      <a href="#blog">Blog</a>
+      <span class="banner-nav-sep"></span>
+      <a href="#listings">Buy</a>
+      <a href="#mandate">Sell Property</a>
+      <a href="#mandate" class="cta">List Mandate</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#insights" onclick="closeMobileNav()">Insights</a>
+    <a href="#blog" onclick="closeMobileNav()">Blog</a>
+    <hr />
+    <a href="#listings" onclick="closeMobileNav()">Buy</a>
+    <a href="#mandate" onclick="closeMobileNav()">Sell Property</a>
+    <a href="#mandate" class="cta" onclick="closeMobileNav()">List Mandate</a>
+  </nav>
 
-<nav class="navbar">
 
-    <div class="logo">
-        Indonesia Commercial Property
-    </div>
-
-    <div class="nav-links">
-        <a href="#">Buy</a>
-        <a href="#">List Your Property</a>
-        <a href="#">Find Deals</a>
-    </div>
-
-</nav>
-
-<!-- =========================
-     HERO
-========================= -->
-
-<section class="hero">
-
+  <!-- HERO — FIX #1: no image, right panel = stat cards -->
+  <section class="hero">
     <div class="hero-left">
-
-        <h1>
-            Everyone sells you a dream.<br>
-            We sell you cashflow from day 1.
-        </h1>
-
-        <p>
-            Pre-leased assets with defined yield and tenant profile.
-        </p>
-
-        <button
-        class="primary-btn"
-        onclick="window.location.href='https://wa.me/6281234567890'">
-            Request Deal Pack
-        </button>
-
+      <span class="hero-eyebrow">Yield-First CRE Marketplace · Indonesia</span>
+      <h1>
+        Everyone else<br>sells you a <em>dream.</em><br>
+        <strong>We sell you Cashflow</strong>
+        <strong>from Day 1.</strong>
+      </h1>
+      <p class="hero-sub">
+        Indonesia's commercial real estate, underwritten by <strong>income yield</strong> — not developer hope, not promise, not brand. Every listing is priced by cap rate, verified by lease, and selected for day-one cash returns.
+      </p>
+      <div class="hero-actions">
+        <a href="#listings" class="btn-primary">Browse Properties</a>
+        <a href="#mandate" class="btn-ghost">List Your Mandate</a>
+      </div>
     </div>
 
     <div class="hero-right">
-
-        <img
-        src="images/hero.jpg"
-        alt="Hero Property">
-
+      <div class="hero-stat-card">
+        <div class="hsc-label">Yield Floor</div>
+        <div class="hsc-value">7<span class="unit">% net p.a.</span></div>
+        <div class="hsc-sub">Minimum threshold on every listing</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hsc-label">Asset Classes</div>
+        <div class="hsc-value">5<span class="unit">types</span></div>
+        <div class="hsc-sub">Office · Retail · Warehouse · CoLiving · Apartment</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hsc-label">Deal Structures</div>
+        <div class="hsc-value">4<span class="unit">instruments</span></div>
+        <div class="hsc-sub">SLB · Rental Guarantee · Buyback · Income Rights</div>
+      </div>
     </div>
+  </section>
 
-</section>
 
-<!-- =========================
-     FEATURED
-========================= -->
+  <!-- STATS STRIP — new section above featured -->
+  <div class="stats-strip">
+    <div class="stats-strip-inner">
+      <div class="stat-item">
+        <div class="stat-label">Active Listings</div>
+        <div class="stat-value">4</div>
+        <div class="stat-note">Income-verified properties</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Combined Listing Value</div>
+        <div class="stat-value">IDR 150B</div>
+        <div class="stat-note">Across all asset classes</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Average Net Yield</div>
+        <div class="stat-value">8.2%</div>
+        <div class="stat-note">Across active listings</div>
+      </div>
+    </div>
+  </div>
 
-<section class="featured">
 
+  <!-- FEATURED — FIX #2: featured.jpg + dark overlay guaranteed -->
+  <section class="featured">
+    <div class="featured-bg"></div>
+    <div class="featured-mesh"></div>
+    <div class="featured-overlay"></div>
     <div class="featured-content">
-
-        <h2>FEATURED PROPERTY</h2>
-
-        <h3>
-            18 Rooms CoLiving @ Lippo Cikarang
-        </h3>
-
-        <p class="featured-highlight">
-            7.0% Yield • Sale-Leaseback • Operator Managed
-        </p>
-
-        <p class="featured-description">
-            Income-generating asset with stabilized occupancy and
-            long-term operating structure.
-        </p>
-
-        <button
-        class="primary-btn"
-        onclick="window.location.href='https://wa.me/6281234567890'">
-            Request Underwriting
-        </button>
-
-    </div>
-
-</section>
-
-<!-- =========================
-     FILTERS
-========================= -->
-
-<section class="filters">
-
-    <div class="tag-container">
-
-        <span class="filter-tag">Apartment</span>
-        <span class="filter-tag">CoLiving</span>
-        <span class="filter-tag">Industrial</span>
-        <span class="filter-tag">Retail</span>
-        <span class="filter-tag">Office</span>
-
-    </div>
-
-    <div class="search-bar">
-
-        <input
-        type="text"
-        placeholder="Search by location or keyword">
-
-    </div>
-
-</section>
-
-<!-- =========================
-     PROPERTY CARDS
-========================= -->
-
-<section class="properties">
-
-    <div class="cards">
-
-        <!-- CARD 1 -->
-
-        <div class="card">
-
-            <div class="card-image">
-
-                <img
-                src="images/apt.jpg"
-                alt="Apartment">
-
-                <div class="badges">
-
-                    <span class="badge">
-                        Above Mall
-                    </span>
-
-                    <span class="badge">
-                        Rental Guarantee
-                    </span>
-
-                </div>
-
-            </div>
-
-            <div class="card-content">
-
-                <h3>
-                    Japanese Studio Apartment
-                </h3>
-
-                <div class="metric">
-
-                    <div class="metric-title">
-                        Selling Price
-                    </div>
-
-                    <div class="metric-value">
-                        IDR 550,000,000
-                    </div>
-
-                </div>
-
-                <div class="metric">
-
-                    <div class="metric-title">
-                        Property Yield
-                    </div>
-
-                    <div class="metric-value">
-                        6.00%
-                    </div>
-
-                </div>
-
-                <div class="metric">
-
-                    <div class="metric-title">
-                        Lease Period
-                    </div>
-
-                    <div class="metric-value">
-                        2.5 Years
-                    </div>
-
-                </div>
-
-                <button
-                class="primary-btn"
-                onclick="window.location.href='https://wa.me/6281234567890'">
-
-                    Request Deal Pack
-
-                </button>
-
-            </div>
-
+      <div>
+        <div class="featured-eyebrow">Featured Listing</div>
+        <h2>18 Rooms CoLiving<br>in Lippo Cikarang</h2>
+        <div class="featured-tagline">
+          <strong>7% Net Yield</strong>
+          <span class="sep"></span>Managed CoLiving
+          <span class="sep"></span>Operator In Place
+          <span class="sep"></span>Fully Occupied
         </div>
-
-        <!-- CARD 2 -->
-
-        <div class="card">
-
-            <div class="card-image">
-
-                <img
-                src="images/coliving.jpg"
-                alt="CoLiving">
-
-                <div class="badges">
-
-                    <span class="badge">
-                        Sale-Leaseback
-                    </span>
-
-                    <span class="badge">
-                        Buyback
-                    </span>
-
-                </div>
-
-            </div>
-
-            <div class="card-content">
-
-                <h3>
-                    18 Rooms CoLiving
-                </h3>
-
-                <div class="metric">
-
-                    <div class="metric-title">
-                        Selling Price
-                    </div>
-
-                    <div class="metric-value">
-                        IDR 7,000,000,000
-                    </div>
-
-                </div>
-
-                <div class="metric">
-
-                    <div class="metric-title">
-                        Property Yield
-                    </div>
-
-                    <div class="metric-value">
-                        7.00%
-                    </div>
-
-                </div>
-
-                <div class="metric">
-
-                    <div class="metric-title">
-                        Lease Period
-                    </div>
-
-                    <div class="metric-value">
-                        10 Years
-                    </div>
-
-                </div>
-
-                <button
-                class="primary-btn"
-                onclick="window.location.href='https://wa.me/6281234567890'">
-
-                    Request Deal Pack
-
-                </button>
-
-            </div>
-
+        <div class="featured-chips">
+          <span class="chip chip-green">Rental Guarantee</span>
+          <span class="chip chip-blue">Sale-Leaseback</span>
+          <span class="chip chip-orange">Operator In Place</span>
         </div>
-
-        <!-- CARD 3 -->
-
-        <div class="card">
-
-            <div class="card-image">
-
-                <img
-                src="images/2br.jpg"
-                alt="2BR Apartment">
-
-                <div class="badges">
-
-                    <span class="badge">
-                        Rental Guarantee
-                    </span>
-
-                </div>
-
-            </div>
-
-            <div class="card-content">
-
-                <h3>
-                    2BR Apartment
-                </h3>
-
-                <div class="metric">
-
-                    <div class="metric-title">
-                        Selling Price
-                    </div>
-
-                    <div class="metric-value">
-                        IDR 350,000,000
-                    </div>
-
-                </div>
-
-                <div class="metric">
-
-                    <div class="metric-title">
-                        Property Yield
-                    </div>
-
-                    <div class="metric-value">
-                        7.50%
-                    </div>
-
-                </div>
-
-                <div class="metric">
-
-                    <div class="metric-title">
-                        Lease Period
-                    </div>
-
-                    <div class="metric-value">
-                        1 Year
-                    </div>
-
-                </div>
-
-                <button
-                class="primary-btn"
-                onclick="window.location.href='https://wa.me/6281234567890'">
-
-                    Request Deal Pack
-
-                </button>
-
-            </div>
-
+        <div class="featured-cta">
+          <a href="#" class="btn-primary">View Property Details</a>
         </div>
+      </div>
+      <div class="featured-kpis">
+        <div class="kpi-box">
+          <div class="kpi-label">Net Yield</div>
+          <div class="kpi-value">7.0%</div>
+          <div class="kpi-sub">p.a. guaranteed</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Occupancy</div>
+          <div class="kpi-value">100%</div>
+          <div class="kpi-sub">all rooms leased</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Format</div>
+          <div class="kpi-value" style="font-size:19px;">CoLiving</div>
+          <div class="kpi-sub">18 rooms · Cikarang</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+
+  <!-- LISTINGS — FIX #3 feature filter, #4 sort, #5 vertical tags -->
+  <section class="listings" id="listings">
+    <div class="listings-header">
+      <div>
+        <div class="section-eyebrow">Active Listings</div>
+        <h2 class="section-title">Income-Verified Properties</h2>
+      </div>
+      <span style="font-size:13px;color:var(--slate-500);" id="listCount">4 properties listed</span>
     </div>
 
-</section>
+    <!-- Property type pills -->
+    <div class="filter-bar" id="filterBar">
+      <button class="type-pill active" data-type="all">All</button>
+      <button class="type-pill" data-type="apartment">Apartment</button>
+      <button class="type-pill" data-type="coliving">CoLiving</button>
+      <button class="type-pill" data-type="retail">Retail</button>
+      <button class="type-pill" data-type="warehouse">Warehouse</button>
+      <button class="type-pill" data-type="office">Office</button>
+    </div>
 
-<!-- =========================
-     FOOTER
-========================= -->
+    <!-- FIX #3 — Feature filter row -->
+    <div class="feature-bar" id="featureBar">
+      <span class="feature-bar-label">Features:</span>
+      <button class="feat-pill active" data-feat="all">All</button>
+      <button class="feat-pill" data-feat="sale-leaseback">Sale-Leaseback</button>
+      <button class="feat-pill" data-feat="rental-guarantee">Rental Guarantee</button>
+      <button class="feat-pill" data-feat="above-mall">Above Mall</button>
+      <button class="feat-pill" data-feat="buyback">Buyback Guarantee</button>
+    </div>
 
-<footer class="footer">
-    © 2026 Indonesia Commercial Property
-</footer>
+    <div class="search-sort-row">
+      <div class="search-wrap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search by city, district, or keyword…" />
+      </div>
+      <span class="sort-label">Sort by</span>
+      <!-- FIX #4 — wrapped in .sort-wrap, arrow via CSS, not background-image on select -->
+      <div class="sort-wrap">
+        <select class="sort-select" id="sortSelect">
+          <option value="yield">Highest Yield</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+          <option value="wale">WALE (Lease Duration)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="cards-grid" id="cardsGrid">
+
+      <!-- Card 1: Office · features: sale-leaseback -->
+      <div class="prop-card" data-type="office" data-yield="8.2" data-price="45000000000" data-wale="5" data-features="sale-leaseback">
+        <div class="card-thumb thumb-off">
+          <div class="card-thumb-fallback"><span class="thumb-icon">🏢</span></div>
+          <!-- FIX #5: vertical stack, 1 tag here -->
+          <div class="card-feature-tags">
+            <span class="card-chip cchip-blue">Sale-Leaseback</span>
+          </div>
+          <div class="card-type-tag">Office</div>
+          <div class="card-yield-badge"><div class="card-yield-pct">8.2%</div><div class="card-yield-label">Net Yield</div></div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">CBD Office Suite</div>
+          <div class="card-location">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Jakarta Selatan
+          </div>
+          <div class="card-divider"></div>
+          <div class="card-stats">
+            <div><div class="card-stat-label">Asking Price</div><div class="card-stat-val">IDR 45B</div></div>
+            <div><div class="card-stat-label">WALE</div><div class="card-stat-val">5.0 yr</div></div>
+            <div><div class="card-stat-label">GLA</div><div class="card-stat-val">1,200 m²</div></div>
+            <div><div class="card-stat-label">Tenancy</div><div class="card-stat-val">Single</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Retail · features: rental-guarantee -->
+      <div class="prop-card" data-type="retail" data-yield="7.5" data-price="28000000000" data-wale="3" data-features="rental-guarantee">
+        <div class="card-thumb thumb-ret">
+          <div class="card-thumb-fallback"><span class="thumb-icon">🏪</span></div>
+          <div class="card-feature-tags">
+            <span class="card-chip cchip-green">Rental Guarantee</span>
+          </div>
+          <div class="card-type-tag">Retail</div>
+          <div class="card-yield-badge"><div class="card-yield-pct">7.5%</div><div class="card-yield-label">Net Yield</div></div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Retail Strip Mall</div>
+          <div class="card-location">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Surabaya, Jawa Timur
+          </div>
+          <div class="card-divider"></div>
+          <div class="card-stats">
+            <div><div class="card-stat-label">Asking Price</div><div class="card-stat-val">IDR 28B</div></div>
+            <div><div class="card-stat-label">WALE</div><div class="card-stat-val">3.0 yr</div></div>
+            <div><div class="card-stat-label">GLA</div><div class="card-stat-val">640 m²</div></div>
+            <div><div class="card-stat-label">Tenancy</div><div class="card-stat-val">Multi</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Warehouse · features: above-mall + rental-guarantee (2 tags, stacked) -->
+      <div class="prop-card" data-type="warehouse" data-yield="9.1" data-price="62000000000" data-wale="7" data-features="above-mall,rental-guarantee">
+        <div class="card-thumb thumb-ware">
+          <div class="card-thumb-fallback"><span class="thumb-icon">🏭</span></div>
+          <!-- FIX #5: 2 tags, stacked vertically, 3rd+ hidden by CSS -->
+          <div class="card-feature-tags">
+            <span class="card-chip cchip-orange">Above Mall</span>
+            <span class="card-chip cchip-green">Rental Guarantee</span>
+          </div>
+          <div class="card-type-tag">Warehouse</div>
+          <div class="card-yield-badge"><div class="card-yield-pct">9.1%</div><div class="card-yield-label">Net Yield</div></div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Grade-A Logistics Hub</div>
+          <div class="card-location">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Bekasi, Jawa Barat
+          </div>
+          <div class="card-divider"></div>
+          <div class="card-stats">
+            <div><div class="card-stat-label">Asking Price</div><div class="card-stat-val">IDR 62B</div></div>
+            <div><div class="card-stat-label">WALE</div><div class="card-stat-val">7.0 yr</div></div>
+            <div><div class="card-stat-label">GLA</div><div class="card-stat-val">4,800 m²</div></div>
+            <div><div class="card-stat-label">Tenancy</div><div class="card-stat-val">Single</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: CoLiving · features: buyback + rental-guarantee (2 tags, stacked) -->
+      <div class="prop-card" data-type="coliving" data-yield="7.8" data-price="15000000000" data-wale="2" data-features="buyback,rental-guarantee">
+        <div class="card-thumb thumb-col">
+          <div class="card-thumb-fallback"><span class="thumb-icon">🛋️</span></div>
+          <div class="card-feature-tags">
+            <span class="card-chip cchip-red">Buyback Guarantee</span>
+            <span class="card-chip cchip-green">Rental Guarantee</span>
+          </div>
+          <div class="card-type-tag">CoLiving</div>
+          <div class="card-yield-badge"><div class="card-yield-pct">7.8%</div><div class="card-yield-label">Net Yield</div></div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Serviced CoLiving</div>
+          <div class="card-location">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Bandung, Jawa Barat
+          </div>
+          <div class="card-divider"></div>
+          <div class="card-stats">
+            <div><div class="card-stat-label">Asking Price</div><div class="card-stat-val">IDR 15B</div></div>
+            <div><div class="card-stat-label">WALE</div><div class="card-stat-val">2.0 yr</div></div>
+            <div><div class="card-stat-label">Rooms</div><div class="card-stat-val">12 rooms</div></div>
+            <div><div class="card-stat-label">Occupancy</div><div class="card-stat-val">100%</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /cards-grid -->
+  </section>
+
+
+  <!-- MANDATE -->
+  <section class="mandate" id="mandate">
+    <div class="mandate-inner">
+      <div class="mandate-left">
+        <div class="section-eyebrow">Buyer Mandates</div>
+        <h2>Can't find what<br>you're looking <em>for?</em></h2>
+        <p class="mandate-body">Tell us your acquisition criteria. We source off-market and match you with income-producing assets before they hit the open market.</p>
+        <ul class="mandate-bullets">
+          <li>Off-market deal flow across all asset classes</li>
+          <li>Minimum 7% net yield threshold on all matches</li>
+          <li>Structured exit options available on request</li>
+          <li>No agency fee to buyers on sourced mandates</li>
+        </ul>
+      </div>
+      <div>
+        <div class="mandate-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Property Type</label>
+              <select class="form-select">
+                <option value="" disabled selected>Select type</option>
+                <option>Apartment</option><option>CoLiving</option>
+                <option>Retail</option><option>Warehouse</option>
+                <option>Office</option><option>Mixed Use</option><option>Any</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Preferred Location</label>
+              <input type="text" class="form-input" placeholder="e.g. Jakarta, Cikarang…" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Budget (IDR)</label>
+              <select class="form-select">
+                <option value="" disabled selected>Select range</option>
+                <option>&lt; IDR 10B</option><option>IDR 10B – 30B</option>
+                <option>IDR 30B – 100B</option><option>IDR 100B – 500B</option>
+                <option>&gt; IDR 500B</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Minimum Yield Target</label>
+              <select class="form-select">
+                <option value="" disabled selected>Select floor</option>
+                <option>7% net p.a.</option><option>8% net p.a.</option>
+                <option>9% net p.a.</option><option>10%+ net p.a.</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Contact (Email or WhatsApp)</label>
+            <input type="text" class="form-input" placeholder="your@email.com or +62 8xx…" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Additional Requirements</label>
+            <input type="text" class="form-input" placeholder="e.g. SLB preferred, WALE &gt; 3yr…" />
+          </div>
+          <div style="margin-top:4px;">
+            <button class="btn-primary" id="mandateBtn" style="width:100%;">Submit Mandate</button>
+            <p class="mandate-disclaimer">We respond within 48 hours. No spam. No cold calls.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand"><span class="footer-logo-mark"></span>Indonesia Commercial Property</div>
+    <div class="footer-copy">© 2026 Indonesia Commercial Property. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#">Privacy</a><a href="#">Disclaimer</a><a href="#">Contact</a>
+    </div>
+  </footer>
+
+
+  <script>
+    /* ── Hamburger ──────────────────────────────────── */
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+    });
+    function closeMobileNav() {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+    }
+
+    /* ── Filter state ───────────────────────────────── */
+    const grid        = document.getElementById('cardsGrid');
+    const listCount   = document.getElementById('listCount');
+    const cards       = Array.from(document.querySelectorAll('.prop-card'));
+    const typePills   = Array.from(document.querySelectorAll('.type-pill'));
+    const featPills   = Array.from(document.querySelectorAll('.feat-pill'));
+    const searchInput = document.getElementById('searchInput');
+    const sortSelect  = document.getElementById('sortSelect');
+
+    let activeType = 'all';
+    let activeFeat = 'all';
+
+    function applyFilters() {
+      const q = searchInput.value.toLowerCase();
+      const s = sortSelect.value;
+
+      let visible = cards.filter(c => {
+        const matchType = activeType === 'all' || c.dataset.type === activeType;
+        const matchFeat = activeFeat === 'all' || (c.dataset.features || '').split(',').includes(activeFeat);
+        const matchSearch = q === '' || c.innerText.toLowerCase().includes(q);
+        return matchType && matchFeat && matchSearch;
+      });
+
+      // sort
+      visible.sort((a, b) => {
+        if (s === 'yield')      return parseFloat(b.dataset.yield)  - parseFloat(a.dataset.yield);
+        if (s === 'price-asc')  return parseFloat(a.dataset.price)  - parseFloat(b.dataset.price);
+        if (s === 'price-desc') return parseFloat(b.dataset.price)  - parseFloat(a.dataset.price);
+        if (s === 'wale')       return parseFloat(b.dataset.wale)   - parseFloat(a.dataset.wale);
+        return 0;
+      });
+
+      // FIX #4: hide all, then appendChild in sorted order (actually reorders DOM)
+      cards.forEach(c => { c.style.display = 'none'; });
+      visible.forEach(c => { c.style.display = ''; grid.appendChild(c); });
+
+      listCount.textContent = visible.length + ' propert' + (visible.length === 1 ? 'y' : 'ies') + ' listed';
+    }
+
+    typePills.forEach(p => p.addEventListener('click', () => {
+      typePills.forEach(x => x.classList.remove('active'));
+      p.classList.add('active');
+      activeType = p.dataset.type;
+      applyFilters();
+    }));
+
+    featPills.forEach(p => p.addEventListener('click', () => {
+      featPills.forEach(x => x.classList.remove('active'));
+      p.classList.add('active');
+      activeFeat = p.dataset.feat;
+      applyFilters();
+    }));
+
+    searchInput.addEventListener('input', applyFilters);
+    sortSelect.addEventListener('change', applyFilters);
+
+    /* ── Mandate submit ─────────────────────────────── */
+    document.getElementById('mandateBtn').addEventListener('click', () => {
+      const btn = document.getElementById('mandateBtn');
+      const orig = btn.textContent;
+      btn.textContent = '\u2713 Received \u2014 we\'ll be in touch within 48h';
+      btn.style.opacity = '0.65';
+      btn.disabled = true;
+      setTimeout(() => { btn.textContent = orig; btn.style.opacity = ''; btn.disabled = false; }, 4000);
+    });
+  </script>
 
 </body>
 </html>
