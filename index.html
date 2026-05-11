@@ -113,11 +113,56 @@
 
     /* ── HERO — no image, data-forward layout ─────────────── */
     .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: calc(100vh - var(--banner-h));
-      background: var(--slate-850);
-    }
+  position: relative;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  min-height: calc(100vh - var(--banner-h));
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+
+  background-image: url('images/hero2.jpg');
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  filter:
+    brightness(.72)
+    saturate(.86)
+    contrast(1.02);
+
+  opacity: .96;
+
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4,7,14,.88) 0%,
+      rgba(4,7,14,.68) 34%,
+      rgba(4,7,14,.42) 58%,
+      rgba(4,7,14,.24) 100%
+    );
+
+  z-index: 1;
+}
+
+.hero-left,
+.hero-right {
+  position: relative;
+  z-index: 2;
+}
 
     .hero-left {
       display: flex; flex-direction: column; justify-content: center;
@@ -146,14 +191,25 @@
     .hero h1 {
       font-size: clamp(38px, 4vw, 68px);
       font-weight: 300; color: var(--slate-050); margin-bottom: 26px;
+      text-shadow:
+  0 4px 24px rgba(0,0,0,.42);
     }
     .hero h1 em { font-style:italic; color:var(--gold); }
     .hero h1 strong { font-weight:700; display:block; }
 
-    .hero-sub {
-      font-size: 15px; color: var(--slate-300);
-      max-width: 440px; line-height: 1.8; margin-bottom: 40px;
-    }
+   .hero-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,.78);
+
+  max-width: 520px;
+
+  line-height: 1.9;
+
+  margin-bottom: 40px;
+
+  text-shadow:
+    0 2px 18px rgba(0,0,0,.42);
+}
     .hero-sub strong { color:var(--slate-100); font-weight:500; }
 
     .hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
@@ -181,12 +237,13 @@
     }
 
     .hero-stat-card {
-      background: var(--slate-800);
+      background: rgba(11,16,24,.74);
       border: 1px solid var(--slate-600);
       border-radius: var(--radius-lg);
       padding: 24px 28px;
       position: relative; overflow: hidden;
       transition: border-color .2s;
+      backdrop-filter: blur(14px);
     }
     .hero-stat-card::before {
       content: ''; position: absolute; left: 0; top: 0; bottom: 0;
@@ -569,43 +626,77 @@
   </nav>
 
 
-  <!-- HERO — FIX #1: no image, right panel = stat cards -->
   <section class="hero">
-    <div class="hero-left">
-      <span class="hero-eyebrow">Yield-First Property Marketplace · Indonesia</span>
-      <h1>
-        Everyone else<br>sells you a <em>dream.</em><br>
-        <strong>We sell you Cashflow</strong>
-        <strong>from Day 1.</strong>
-      </h1>
-      <p class="hero-sub">
-        Indonesia's income producing real estate, listed by <strong>actual income yield</strong> — not developer hope, promise, nor brand. Every listing is priced by cap rate, with leases in place, and selected for day-one cash returns.
-      </p>
-      <div class="hero-actions">
-        <a href="#listings" class="btn-primary">Browse Properties</a>
-        <a href="#mandate" class="btn-ghost">List Your Mandate</a>
+
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-left">
+    <span class="hero-eyebrow">
+      Yield-First Property Marketplace · Indonesia
+    </span>
+
+    <h1>
+      Everyone else<br>
+      sells you a <em>dream.</em><br>
+      <strong>We sell you Cashflow</strong>
+      <strong>from Day 1.</strong>
+    </h1>
+
+    <p class="hero-sub">
+      Indonesia's income producing real estate, listed by
+      <strong>actual income yield</strong>
+      — not developer hope, promise, nor brand.
+      Every listing is priced by cap rate, with leases in place,
+      and selected for day-one cash returns.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#listings" class="btn-primary">
+        Browse Properties
+      </a>
+
+      <a href="#mandate" class="btn-ghost">
+        List Your Mandate
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+
+    <div class="hero-stat-card">
+      <div class="hsc-label">Yield Floor</div>
+      <div class="hsc-value">
+        6<span class="unit">% net p.a.</span>
+      </div>
+      <div class="hsc-sub">
+        Minimum threshold on every listing
       </div>
     </div>
 
-    <div class="hero-right">
-      <div class="hero-stat-card">
-        <div class="hsc-label">Yield Floor</div>
-        <div class="hsc-value">6<span class="unit">% net p.a.</span></div>
-        <div class="hsc-sub">Minimum threshold on every listing</div>
+    <div class="hero-stat-card">
+      <div class="hsc-label">Asset Classes</div>
+      <div class="hsc-value">
+        5<span class="unit">types</span>
       </div>
-      <div class="hero-stat-card">
-        <div class="hsc-label">Asset Classes</div>
-        <div class="hsc-value">5<span class="unit">types</span></div>
-        <div class="hsc-sub">Office · Retail · Warehouse · CoLiving · Apartment</div>
-      </div>
-      <div class="hero-stat-card">
-        <div class="hsc-label">Property Features</div>
-        <div class="hsc-value">4<span class="unit">features</span></div>
-        <div class="hsc-sub">Sale-Leaseback · Rental Guarantee · Buyback Guarantee · Above Mall</div>
+      <div class="hsc-sub">
+        Office · Retail · Warehouse · CoLiving · Apartment
       </div>
     </div>
-  </section>
 
+    <div class="hero-stat-card">
+      <div class="hsc-label">Property Features</div>
+      <div class="hsc-value">
+        4<span class="unit">features</span>
+      </div>
+      <div class="hsc-sub">
+        Sale-Leaseback · Rental Guarantee · Buyback Guarantee · Above Mall
+      </div>
+    </div>
+
+  </div>
+
+</section>
 
   <!-- STATS STRIP — new section above featured -->
   <div class="stats-strip">
