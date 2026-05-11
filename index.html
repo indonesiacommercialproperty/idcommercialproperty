@@ -261,7 +261,7 @@
   position: absolute;
   inset: 0;
 
-  background-image: url('/images/featured.jpg');
+  background-image: url('images/featured.jpg');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -275,13 +275,13 @@
   inset: 0;
 
   background:
-    linear-gradient(
-      90deg,
-      rgba(10,12,16,0.82) 0%,
-      rgba(10,12,16,0.58) 30%,
-      rgba(10,12,16,0.18) 60%,
-      rgba(10,12,16,0.05) 100%
-    );
+  linear-gradient(
+    90deg,
+    rgba(10,12,16,0.88) 0%,
+    rgba(10,12,16,0.72) 32%,
+    rgba(10,12,16,0.42) 58%,
+    rgba(10,12,16,0.30) 100%
+  );
 
   z-index: 1;
 }
@@ -308,7 +308,7 @@
     .featured-eyebrow::before { content:''; display:block; width:20px; height:1px; background:var(--gold); }
     .featured h2 { font-size:clamp(28px,3.2vw,50px); font-weight:400; color:var(--slate-050); margin-bottom:14px; }
     .featured-tagline {
-      font-size:14px; color:var(--slate-400); margin-bottom:28px;
+      font-size:14px; color: var(--slate-200); margin-bottom:28px;
       display:flex; align-items:center; gap:12px; flex-wrap:wrap;
     }
     .featured-tagline .sep { width:3px; height:3px; background:var(--gold-dim); border-radius:50%; }
@@ -325,7 +325,8 @@
 
     .featured-kpis { display:flex; flex-direction:column; gap:14px; min-width:180px; }
     .kpi-box {
-      background:rgba(255,255,255,.04);
+      background: rgba(20,23,26,.42);
+      backdrop-filter: blur(10px);
       border:1px solid var(--slate-600); border-radius:var(--radius);
       padding:18px 22px; text-align:center;
     }
@@ -571,14 +572,14 @@
   <!-- HERO — FIX #1: no image, right panel = stat cards -->
   <section class="hero">
     <div class="hero-left">
-      <span class="hero-eyebrow">Yield-First CRE Marketplace · Indonesia</span>
+      <span class="hero-eyebrow">Yield-First Property Marketplace · Indonesia</span>
       <h1>
         Everyone else<br>sells you a <em>dream.</em><br>
         <strong>We sell you Cashflow</strong>
         <strong>from Day 1.</strong>
       </h1>
       <p class="hero-sub">
-        Indonesia's commercial real estate, underwritten by <strong>income yield</strong> — not developer hope, not promise, not brand. Every listing is priced by cap rate, verified by lease, and selected for day-one cash returns.
+        Indonesia's income producing real estate, listed by <strong>actual income yield</strong> — not developer hope, promise, nor brand. Every listing is priced by cap rate, with leases in place, and selected for day-one cash returns.
       </p>
       <div class="hero-actions">
         <a href="#listings" class="btn-primary">Browse Properties</a>
@@ -589,7 +590,7 @@
     <div class="hero-right">
       <div class="hero-stat-card">
         <div class="hsc-label">Yield Floor</div>
-        <div class="hsc-value">7<span class="unit">% net p.a.</span></div>
+        <div class="hsc-value">6<span class="unit">% net p.a.</span></div>
         <div class="hsc-sub">Minimum threshold on every listing</div>
       </div>
       <div class="hero-stat-card">
@@ -598,9 +599,9 @@
         <div class="hsc-sub">Office · Retail · Warehouse · CoLiving · Apartment</div>
       </div>
       <div class="hero-stat-card">
-        <div class="hsc-label">Deal Structures</div>
-        <div class="hsc-value">4<span class="unit">instruments</span></div>
-        <div class="hsc-sub">SLB · Rental Guarantee · Buyback · Income Rights</div>
+        <div class="hsc-label">Property Features</div>
+        <div class="hsc-value">4<span class="unit">features</span></div>
+        <div class="hsc-sub">Sale-Leaseback · Rental Guarantee · Buyback Guarantee · Above Mall</div>
       </div>
     </div>
   </section>
@@ -616,12 +617,12 @@
       </div>
       <div class="stat-item">
         <div class="stat-label">Combined Listing Value</div>
-        <div class="stat-value">IDR 150B</div>
+        <div class="stat-value">IDR 9.2B</div>
         <div class="stat-note">Across all asset classes</div>
       </div>
       <div class="stat-item">
-        <div class="stat-label">Average Net Yield</div>
-        <div class="stat-value">8.2%</div>
+        <div class="stat-label">Weighted Avg Net Yield</div>
+        <div class="stat-value">6.8%</div>
         <div class="stat-note">Across active listings</div>
       </div>
     </div>
@@ -678,7 +679,7 @@
     <div class="listings-header">
       <div>
         <div class="section-eyebrow">Active Listings</div>
-        <h2 class="section-title">Income-Verified Properties</h2>
+        <h2 class="section-title">Income-Producing Properties</h2>
       </div>
       <span style="font-size:13px;color:var(--slate-500);" id="listCount">4 properties listed</span>
     </div>
